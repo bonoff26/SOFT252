@@ -9,19 +9,18 @@ package example1;
  *
  * @author tallenbrook
  */
-public class Example1 {
-
+public class MyHeight {
+    
     /**
      * @param args the command line arguments
      */
-    
     public static void main(String[] args) {
-    // TODO code application logic here
-    int day = 22;
-    System.out.println("Hello world!");
-    System.out.println("The date today is " + day);
-    System.out.println(true);
-    System.exit(0); 
- }
+        double cm = 50;
+        double inches = cm / 2.54;
+        double feet = inches / 12;
+        double inches2 = feet % 12;
+        System.out.println("CM = " + cm + ", inches = " + inches + ", feet = " + feet + ", inches 2 = " + inches2);
+        // TODO code application logic here
+    }
     
 }

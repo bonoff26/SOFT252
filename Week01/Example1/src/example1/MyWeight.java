@@ -9,19 +9,17 @@ package example1;
  *
  * @author tallenbrook
  */
-public class Example1 {
-
+public class MyWeight {
+    
     /**
      * @param args the command line arguments
      */
-    
     public static void main(String[] args) {
-    // TODO code application logic here
-    int day = 22;
-    System.out.println("Hello world!");
-    System.out.println("The date today is " + day);
-    System.out.println(true);
-    System.exit(0); 
- }
+        int kg = 10;
+        double pounds;
+        pounds = kg * 2.2;
+        System.out.println(kg + " kg is " + pounds + " lbs");
+        // TODO code application logic here
+    }
     
 }
