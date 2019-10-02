@@ -9,21 +9,21 @@ package guis;
  *
  * @author tallenbrook
  */
-public class MyWeight extends javax.swing.JFrame {
+public class MyHeight extends javax.swing.JFrame {
 
     /**
      * Creates new form MyWeight
      */
-    public MyWeight() {
+    public MyHeight() {
         initComponents();
     }
     
     private void doConversion() {
-        int kg = Integer.parseInt(txtKg.getText());
-        double pounds;
+        int cm = Integer.parseInt(txtCm.getText());
+        double inches;
         
-        pounds = kg * 2.2;
-        txtPounds.setText("" + pounds);
+        inches = cm / 2.54;
+        txtInches.setText("" + Math.round(inches));
     }
 
     /**
@@ -36,9 +36,9 @@ public class MyWeight extends javax.swing.JFrame {
     private void initComponents() {
 
         lblTitle = new javax.swing.JLabel();
-        txtKg = new javax.swing.JTextField();
+        txtCm = new javax.swing.JTextField();
         btnConvert = new javax.swing.JButton();
-        txtPounds = new javax.swing.JTextField();
+        txtInches = new javax.swing.JTextField();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         btnClose = new javax.swing.JButton();
@@ -46,11 +46,11 @@ public class MyWeight extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         lblTitle.setFont(new java.awt.Font("Comic Sans MS", 0, 36)); // NOI18N
-        lblTitle.setText("Weight Conversion");
+        lblTitle.setText("Height Conversion");
 
-        txtKg.addActionListener(new java.awt.event.ActionListener() {
+        txtCm.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtKgActionPerformed(evt);
+                txtCmActionPerformed(evt);
             }
         });
 
@@ -61,11 +61,11 @@ public class MyWeight extends javax.swing.JFrame {
             }
         });
 
-        txtPounds.setEditable(false);
+        txtInches.setEditable(false);
 
-        jLabel1.setText("LBS");
+        jLabel1.setText("INCHES");
 
-        jLabel2.setText("KG");
+        jLabel2.setText("CM");
 
         btnClose.setText("Close");
         btnClose.addActionListener(new java.awt.event.ActionListener() {
@@ -85,19 +85,22 @@ public class MyWeight extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(lblTitle)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 15, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(37, 37, 37))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(txtKg, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(54, 54, 54)
+                        .addComponent(txtCm, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
                         .addComponent(btnConvert)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jLabel1)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(btnClose)
                             .addGroup(layout.createSequentialGroup()
-                                .addComponent(jLabel1)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(btnClose)
+                                .addGap(74, 74, 74))
+                            .addGroup(layout.createSequentialGroup()
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(txtPounds, javax.swing.GroupLayout.PREFERRED_SIZE, 64, javax.swing.GroupLayout.PREFERRED_SIZE)))))
-                .addGap(22, 22, 22))
+                                .addComponent(txtInches)
+                                .addGap(22, 22, 22))))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -106,9 +109,9 @@ public class MyWeight extends javax.swing.JFrame {
                 .addComponent(lblTitle)
                 .addGap(32, 32, 32)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(txtKg, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtCm, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnConvert)
-                    .addComponent(txtPounds, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtInches, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel1)
                     .addComponent(jLabel2))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 103, Short.MAX_VALUE)
@@ -119,9 +122,9 @@ public class MyWeight extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void txtKgActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtKgActionPerformed
+    private void txtCmActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtCmActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_txtKgActionPerformed
+    }//GEN-LAST:event_txtCmActionPerformed
 
     private void btnCloseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCloseActionPerformed
         System.exit(0);
@@ -148,20 +151,21 @@ public class MyWeight extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(MyWeight.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(MyHeight.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(MyWeight.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(MyHeight.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(MyWeight.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(MyHeight.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(MyWeight.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(MyHeight.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new MyWeight().setVisible(true);
+                new MyHeight().setVisible(true);
             }
         });
     }
@@ -172,7 +176,7 @@ public class MyWeight extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel lblTitle;
-    private javax.swing.JTextField txtKg;
-    private javax.swing.JTextField txtPounds;
+    private javax.swing.JTextField txtCm;
+    private javax.swing.JTextField txtInches;
     // End of variables declaration//GEN-END:variables
 }

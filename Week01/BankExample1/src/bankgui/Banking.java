@@ -5,6 +5,7 @@
  */
 package bankgui;
 import bankentities.BankAccount;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -25,17 +26,35 @@ public class Banking extends javax.swing.JFrame {
     }
     
     private void doDeposit() {
-        int amount = Integer.parseInt(txtAmount.getText());
-        ba.depositMoney(amount);
-        txtBalance.setText("" + ba.getBalance());
-        txtAmount.setText("");
+        try {
+            int amount = Integer.parseInt(txtAmount.getText());
+            ba.depositMoney(amount);
+            txtBalance.setText("" + ba.getBalance());
+            txtAmount.setText("");  
+        }
+        catch (NumberFormatException e) {
+            JOptionPane.showMessageDialog(this, "Please enter numbers only", "Error in amount", JOptionPane.ERROR_MESSAGE); 
+        }
+
     }
     
     private void doWithdraw() {
-        int amount = Integer.parseInt(txtAmount.getText());
-        ba.withdrawMoney(amount);
-        txtBalance.setText("" + ba.getBalance());
-        txtAmount.setText("");
+        try {
+            int amount = Integer.parseInt(txtAmount.getText());
+            boolean fundsOK = ba.withdrawMoney(amount);
+            if (fundsOK) {
+                txtBalance.setText("" + ba.getBalance());
+            }
+            else {
+                 JOptionPane.showMessageDialog(this,"Insufficient funds available\n"
+                    + "withdrawal not actioned", "Insufficient funds",
+                    JOptionPane.INFORMATION_MESSAGE); 
+            }
+            txtAmount.setText("");      
+        }
+        catch (NumberFormatException e) {
+            JOptionPane.showMessageDialog(this, "Please enter numbers only", "Error in amount", JOptionPane.ERROR_MESSAGE); 
+        }
     }
 
     /**
@@ -113,8 +132,18 @@ public class Banking extends javax.swing.JFrame {
         jLabel4.setText("Amount");
 
         btnDeposit.setText("Deposit");
+        btnDeposit.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnDepositActionPerformed(evt);
+            }
+        });
 
         btnWithdraw.setText("Withdraw");
+        btnWithdraw.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnWithdrawActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -148,6 +177,11 @@ public class Banking extends javax.swing.JFrame {
         );
 
         btnExit.setText("Exit");
+        btnExit.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnExitActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -185,6 +219,18 @@ public class Banking extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void btnDepositActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDepositActionPerformed
+        doDeposit();
+    }//GEN-LAST:event_btnDepositActionPerformed
+
+    private void btnWithdrawActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnWithdrawActionPerformed
+        doWithdraw();
+    }//GEN-LAST:event_btnWithdrawActionPerformed
+
+    private void btnExitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExitActionPerformed
+        System.exit(0);
+    }//GEN-LAST:event_btnExitActionPerformed
 
     /**
      * @param args the command line arguments
