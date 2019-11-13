@@ -42,30 +42,8 @@ public class Landlord {
      * @return Selected strategy.
      */
     public static IDrinksStrategy selectStrategy(String drinkType){
-        IDrinksStrategy strategy;
-        switch (drinkType) {
-            case "Pint":
-                strategy = new PubModel.Strategies.TapStrategy();
-                break;
-            case "Bottle":
-                strategy = new PubModel.Strategies.BottleStrategy();
-                break;
-            case "Tea":
-                strategy = new PubModel.Strategies.TeaStrategy();
-                break;
-            case "Coffee":
-                strategy = new PubModel.Strategies.CoffeeStrategy();
-                break;
-            case "Long Drink":
-                strategy = new PubModel.Strategies.LongDrinkStrategy();
-                break;
-            case "Cocktail":
-                strategy = new PubModel.Strategies.CocktailStrategy();
-                break;
-            default:
-                strategy = new PubModel.Strategies.DefaultStrategy();
-                break;
-        }
+        IDrinksStrategy strategy = DrinksFactory.selectDrink(drinkType);
+   
         return strategy;
     }
     
